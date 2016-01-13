@@ -2,38 +2,35 @@
 
 require 'optparse'
 require 'methadone'
+require 'xcodeproj'
 require 'findxcprojorphan.rb'
 
 class App
   include Methadone::Main
   include Methadone::CLILogging
 
-  main do # Add args you want: |like,so|
-    # your program code here
-    # You can access CLI options via
-    # the options Hash
+  main do |xcproj_path, files_glob|
+    proj = Xcodeproj::Project.new(xcproj_path)
+    proj.initialize_from_file
+    referenced_files = proj.targets.find_all { |target| target.class == Xcodeproj::Project::Object::PBXNativeTarget }.flat_map { |target| target.source_build_phase.files.map(&:file_ref).map(&:real_path).map(&:to_s) }.sort
+
+    files_on_disk = Dir.glob(files_glob).map { |path| File.absolute_path(path) }.sort
+
+    unused_files = files_on_disk - referenced_files
+
+    if unused_files.empty?
+      info "No Orphaned Files!"
+    else
+      info "These files aren't referenced anywhere in the project:"
+      unused_files.map { |unused_file| "\t#{unused_file}" }.each { |line| info line }
+      exit 1
+    end
   end
 
-  # supplemental methods here
+  description "Find files matching [files_glob] that aren't referenced in [xcproj_path]"
 
-  # Declare command-line interface here
-
-  # description "one line description of your app"
-  #
-  # Accept flags via:
-  # on("--flag VAL","Some flag")
-  # options[flag] will contain VAL
-  #
-  # Specify switches via:
-  # on("--[no-]switch","Some switch")
-  #
-  # Or, just call OptionParser methods on opts
-  #
-  # Require an argument
-  # arg :some_arg 
-  #
-  # # Make an argument optional
-  # arg :optional_arg, :optional
+  arg :xcproj_path, 'Path to xcproj to search for orphans'
+  arg :files_glob, 'Only files matching this glob will be considered orphans'
 
   version Findxcprojorphan::VERSION
 
