@@ -1,6 +1,7 @@
 # Findxcprojorphan
 
-TODO: Write a gem description
+This tool will list any source files that exist on the filesystem but aren't referenced by an Xcode project. This
+lets you quickly find files that should be deleted or have been erroneously excluded from your project.
 
 ## Installation
 
@@ -18,7 +19,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Suppose you have a project called RadProject.xcodeproj and source files inside RadProjectSrc. After installing the gem,
+simply run:
+
+    $ bundle exec findxcprojorphan RadProject.xcodeproj "RadProjectSrc/**/*.{m,swift}"
+    
+Note the quotes around the glob argument.
+
+Viewing help is easy and fun:
+
+    $ bundle exec findxcprojorphan --help
 
 ## Contributing
 

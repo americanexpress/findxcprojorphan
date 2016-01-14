@@ -3,7 +3,7 @@ PATH
   specs:
     findxcprojorphan (0.0.1)
       methadone (~> 1.9.2)
-      xcodeproj
+      xcodeproj (~> 0.28)
 
 GEM
   remote: https://rubygems.org/
@@ -69,11 +69,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba
+  aruba (~> 0.10)
   bundler (~> 1.6)
   findxcprojorphan!
-  rake
-  rdoc
+  rake (~> 10.5)
+  rdoc (~> 4.2)
 
 BUNDLED WITH
    1.11.2
