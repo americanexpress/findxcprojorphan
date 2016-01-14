@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    findxcprojorphan (0.0.1)
+    findxcprojorphan (1.0.0)
       methadone (~> 1.9.2)
       xcodeproj (~> 0.28)
 
