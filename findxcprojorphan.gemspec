@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'findxcprojorphan'
   spec.version       = Findxcprojorphan::VERSION
   spec.authors       = ['Manuel Wudka-Robles']
-  spec.email         = ['mwudka@me.com']
+  spec.email         = ['manuel.wudkarobles@aexp.com']
   spec.summary       = %q{Finds source files unreferenced in Xcode project}
   spec.homepage      = 'https://github.com/americanexpress/findxcprojorphan'
-  spec.license       = 'coil'
+  spec.license       = 'Apache-2.0'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }

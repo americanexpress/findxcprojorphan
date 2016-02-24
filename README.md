@@ -23,17 +23,22 @@ Suppose you have a project called RadProject.xcodeproj and source files inside R
 simply run:
 
     $ bundle exec findxcprojorphan RadProject.xcodeproj "RadProjectSrc/**/*.{m,swift}"
-    
+
 Note the quotes around the glob argument.
 
 Viewing help is easy and fun:
 
     $ bundle exec findxcprojorphan --help
 
-## Contributing
+# Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/findxcprojorphan/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+We welcome Your interest in the American Express Open Source Community on Github. Any Contributor to any Open Source Project managed by the American Express Open Source Community must accept and sign an Agreement indicating agreement to the terms below. Except for the rights granted in this Agreement to American Express and to recipients of software distributed by American Express, You reserve all right, title, and interest, if any, in and to Your Contributions. Please [fill out the Agreement](http://goo.gl/forms/mIHWH1Dcuy).
+
+# License
+
+Any contributions made under this project will be governed by the [Apache License 2.0](https://github.com/americanexpress/findxcprojorphan/blob/master/LICENSE.txt).
+
+# Code of Conduct
+
+This project adheres to the [American Express Community Guidelines](https://github.com/americanexpress/middle-manager/wiki/Code-of-Conduct).
+By participating, you are expected to honor these guidelines.
